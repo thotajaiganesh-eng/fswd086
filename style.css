@@ -1,0 +1,428 @@
+Add the following code **just before `</style>`** in your existing CSS:
+
+```css
+/* =========================
+   EXTRA ANIMATIONS
+========================= */
+
+/* Animated glowing blood drops */
+.blood-drop {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.7));
+    animation-name: bloodFallGlow;
+}
+
+@keyframes bloodFallGlow {
+    0% {
+        transform: translateY(-60px) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(50vh) scale(1.2) rotate(180deg);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(110vh) scale(0.7) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* Logo glow */
+.logo {
+    text-shadow:
+        0 0 5px white,
+        0 0 15px #ff6666;
+
+    animation:
+        heartbeat 1.5s infinite,
+        logoGlow 2s infinite alternate;
+}
+
+@keyframes logoGlow {
+    from {
+        text-shadow:
+            0 0 5px white;
+    }
+
+    to {
+        text-shadow:
+            0 0 10px white,
+            0 0 25px #ffcccc,
+            0 0 40px red;
+    }
+}
+
+
+/* Navigation floating effect */
+nav a {
+    display: inline-block;
+}
+
+nav a:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+
+/* Hero text animation */
+.hero h1 {
+    animation:
+        titleFloat 3s ease-in-out infinite,
+        titleGlow 2s infinite alternate,
+        heroZoom 4s ease-in-out infinite;
+}
+
+@keyframes heroZoom {
+    0%, 100% {
+        letter-spacing: 0;
+    }
+
+    50% {
+        letter-spacing: 2px;
+    }
+}
+
+
+/* Paragraph floating */
+.hero p {
+    animation:
+        fadeIn 1.5s ease,
+        paragraphFloat 4s ease-in-out infinite;
+}
+
+@keyframes paragraphFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+
+/* Button shine animation */
+.buttons button,
+.form-box button {
+    position: relative;
+    overflow: hidden;
+}
+
+.buttons button::before,
+.form-box button::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 50%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.5),
+        transparent
+    );
+
+    transform: skewX(-25deg);
+
+    transition: 0.6s;
+}
+
+.buttons button:hover::before,
+.form-box button:hover::before {
+    left: 150%;
+}
+
+
+/* Button click effect */
+.buttons button:active,
+.form-box button:active {
+    transform: scale(0.92);
+}
+
+
+/* Statistics card glow */
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    background: rgba(255, 0, 0, 0.08);
+
+    border-radius: 50%;
+
+    top: -40px;
+    right: -40px;
+
+    transition: 0.5s;
+}
+
+.stat-card:hover::before {
+    width: 250px;
+    height: 250px;
+}
+
+
+/* Form glowing border */
+.form-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-box::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        red,
+        transparent
+    );
+
+    animation: formLight 3s linear infinite;
+}
+
+@keyframes formLight {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+
+/* Input hover animation */
+input:hover,
+select:hover,
+textarea:hover {
+    transform: translateX(4px);
+    border-color: #ff9999;
+}
+
+
+/* Table row animation */
+tbody tr:hover {
+    animation: rowShake 0.4s ease;
+}
+
+@keyframes rowShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(4px);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+}
+
+
+/* Table heading glow */
+th {
+    animation: tableHeaderGlow 2s infinite alternate;
+}
+
+@keyframes tableHeaderGlow {
+    from {
+        text-shadow: 0 0 2px white;
+    }
+
+    to {
+        text-shadow:
+            0 0 8px white,
+            0 0 15px #ff9999;
+    }
+}
+
+
+/* Page transition */
+.page.active {
+    animation:
+        pageEnter 0.7s ease,
+        pageGlow 1s ease;
+}
+
+@keyframes pageGlow {
+    0% {
+        filter: brightness(0.8);
+    }
+
+    50% {
+        filter: brightness(1.08);
+    }
+
+    100% {
+        filter: brightness(1);
+    }
+}
+
+
+/* Emergency box stronger animation */
+.emergency {
+    animation:
+        emergencyPulse 1.5s infinite,
+        emergencyShake 4s infinite;
+}
+
+@keyframes emergencyShake {
+    0%, 90%, 100% {
+        transform: translateX(0);
+    }
+
+    92% {
+        transform: translateX(-3px);
+    }
+
+    94% {
+        transform: translateX(3px);
+    }
+
+    96% {
+        transform: translateX(-3px);
+    }
+
+    98% {
+        transform: translateX(3px);
+    }
+}
+
+
+/* Footer glow */
+footer {
+    box-shadow:
+        0 -5px 25px rgba(180,0,0,0.4);
+}
+
+
+/* Scroll-to-top button rotation */
+#topButton:hover {
+    transform: scale(1.2) rotate(360deg);
+    transition: 0.6s;
+}
+
+
+/* Heart icons floating */
+.hero::after {
+    content: "❤️  🩸  ❤️  🩸  ❤️";
+
+    display: block;
+
+    margin-top: 35px;
+
+    font-size: 25px;
+
+    letter-spacing: 15px;
+
+    animation: heartFloat 3s ease-in-out infinite;
+
+    opacity: 0.6;
+}
+
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translateY(-12px);
+        opacity: 1;
+    }
+}
+
+
+/* Mobile animation adjustment */
+@media(max-width: 700px) {
+
+    .hero::after {
+        font-size: 18px;
+        letter-spacing: 5px;
+    }
+
+}
+```
+
+### Optional: add a click ripple effect
+
+Add this **before `</script>`** in your existing JavaScript:
+
+```javascript
+/* =========================
+   BUTTON RIPPLE EFFECT
+========================= */
+
+document.addEventListener("click", function(event) {
+
+    let button =
+        event.target.closest("button");
+
+    if (!button) return;
+
+    let ripple =
+        document.createElement("span");
+
+    ripple.style.position = "absolute";
+    ripple.style.width = "10px";
+    ripple.style.height = "10px";
+    ripple.style.background = "rgba(255,255,255,0.7)";
+    ripple.style.borderRadius = "50%";
+    ripple.style.transform = "scale(0)";
+    ripple.style.animation = "rippleEffect 0.6s linear";
+    ripple.style.left =
+        event.offsetX - 5 + "px";
+    ripple.style.top =
+        event.offsetY - 5 + "px";
+    ripple.style.pointerEvents = "none";
+
+    button.appendChild(ripple);
+
+    setTimeout(function() {
+        ripple.remove();
+    }, 600);
+
+});
+```
+
+And add this animation to your CSS:
+
+```css
+@keyframes rippleEffect {
+
+    to {
+        transform: scale(25);
+        opacity: 0;
+    }
+
+}
+```
+
+This will give your BloodConnect site **glowing blood drops, animated hero text, button shine/ripple effects, floating hearts, glowing forms, animated table rows, emergency shaking, and stronger hover effects** while keeping your existing functionality unchanged.
